@@ -46,3 +46,9 @@ group :development do
   # gem "spring"
 end
 
+
+gem "jwt", "~> 2.3"
+
+gem "active_model_serializers", "~> 0.10.13"
+
+gem "faker", "~> 2.20"
