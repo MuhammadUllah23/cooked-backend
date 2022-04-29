@@ -1,5 +1,10 @@
 class ProductsController < ApplicationController
 
+    def index
+        @products = Product.all
+        render json: @products
+    end
+
     private
 
     def product_params
