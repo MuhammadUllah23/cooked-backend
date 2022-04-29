@@ -5,6 +5,11 @@ class ProductsController < ApplicationController
         render json: @products
     end
 
+    def show 
+        @product = Product.find(params[:id])
+        render json: @product
+    end
+
     private
 
     def product_params
