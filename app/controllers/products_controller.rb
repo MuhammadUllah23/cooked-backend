@@ -10,6 +10,15 @@ class ProductsController < ApplicationController
         render json: @product
     end
 
+    def create 
+        @product = Product.new(product_params)
+        if @product.save
+            render json: :@product
+        else
+            render json: {message: "Make sure to correctly fill all inputs."}
+        end
+    end
+
     private
 
     def product_params
