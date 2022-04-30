@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+    before_action :set_product, only: [:show, :update, :destroy]
 
     def index
         @products = Product.all
@@ -6,7 +7,7 @@ class ProductsController < ApplicationController
     end
 
     def show 
-        @product = Product.find(params[:id])
+    
         render json: @product
     end
 
@@ -20,7 +21,7 @@ class ProductsController < ApplicationController
     end
 
     def update
-        @product = Product.find(params[:id])
+        
         if @product.update(product_params)
             render json: @product
         else
@@ -29,7 +30,7 @@ class ProductsController < ApplicationController
     end
 
     def destroy
-        @product = Product.find(params[:id])
+        
         @product.destroy
     end
 
