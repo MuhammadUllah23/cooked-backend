@@ -36,5 +36,12 @@ class ApplicationController < ActionController::API
         end
     end
 
+    # Once decoded_token passes then it will find the user by its id and set it as @user.
+    def current_user
+        if decoded_token
+            user_id = decoded_token[0]['user_id']
+            @user = User.find_by(id: user_id)
+        end
+    end
     
 end
