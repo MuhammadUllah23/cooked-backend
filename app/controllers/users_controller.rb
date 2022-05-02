@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    
+    # skip before_action :authorized only for create method
+    skip_before_action :authorized, only: [:create]
 
     # Creats a new user  and issues a token if it has been sucessfully created.
     def create
