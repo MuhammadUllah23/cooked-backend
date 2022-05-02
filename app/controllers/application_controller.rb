@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+    before_action :authorized
 
     # Authentication: Taking a username and password and authenticating that it is correct. Like logging a user in.
     # Authorization: Making sure the user that sends requests to the server is the same user that is logged in. It is authorizing that the user has access to a particular system.
@@ -47,6 +48,11 @@ class ApplicationController < ActionController::API
     # Checks to see if user is logged in. The two !! is to make it a truthy value.
     def logged_in?
         !!current_user
+    end
+
+    # Set as before_action to make sure a user is logged in before anything else happens.
+    def authorized
+        render json: {message: 'Please log in'}, status: :unauthorized unless logged_in?
     end
     
 end
