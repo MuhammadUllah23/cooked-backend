@@ -11,6 +11,9 @@ class ApplicationController < ActionController::API
     end
 
     def decoded_token(token)
+        # If server receives bad token, it can lead to a 500 Internal Server Error. 
+        # But the rescue syntax accounts for the invalid token by returning nil.
+        # It keeps the server from crashing.
         if auth_header
             token = auth_header.split(' ')[1]
             # headers: { 'Authorization': 'Bearer <token>' }
@@ -22,4 +25,6 @@ class ApplicationController < ActionController::API
             end
         end
     end
+
+    
 end
