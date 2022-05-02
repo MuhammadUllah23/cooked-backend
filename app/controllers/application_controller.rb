@@ -43,5 +43,10 @@ class ApplicationController < ActionController::API
             @user = User.find_by(id: user_id)
         end
     end
+
+    # Checks to see if user is logged in. The two !! is to make it a truthy value.
+    def logged_in?
+        !!current_user
+    end
     
 end
